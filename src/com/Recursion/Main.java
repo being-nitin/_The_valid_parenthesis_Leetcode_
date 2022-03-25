@@ -40,6 +40,7 @@ public class Main {
             else if(str.charAt(i)==']' && (stack.isEmpty() || stack.pop()!='['))
                 return false;
         }
+        // At last we will check that the stack is empty or not.
         if(stack.size()>0)
             return false;
         return true;
