@@ -24,12 +24,24 @@ public class Main {
       Input: s = "(]"
       Output: false
 	 */
-
-
-
+      String str = "(){}[]";
+        System.out.println(valid(str));
     }
     public static boolean valid(String str){
-
-
+        Stack<Character> stack = new Stack<>();
+        for(int i=0;i<str.length();i++)
+        {
+            if(str.charAt(i)=='(' || str.charAt(i)=='{' || str.charAt(i)=='[')
+                stack.add(str.charAt(i));
+            else if(str.charAt(i)==')' && (stack.isEmpty() || stack.pop()!='('))
+                return false;
+            else if(str.charAt(i)=='}' && (stack.isEmpty() || stack.pop()!='{'))
+                return false;
+            else if(str.charAt(i)==']' && (stack.isEmpty() || stack.pop()!='['))
+                return false;
+        }
+        if(stack.size()>0)
+            return false;
+        return true;
     }
 }
